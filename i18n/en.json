@@ -25,7 +25,7 @@
   "settings": {
     "polling_interval": "Polling Interval (in minutes: 1, 5, 10 or 30)",
     "timezone": "Time Zone (e.g.: America/Sao_Paulo, America/New_York, Europe/Madrid, UTC)",
-    "notifications": "Enable Notifications",
-    "debug_mode": "Debug Mode"
+    "notifications": "Enable Notifications (true/false)",
+    "debug_mode": "Debug Mode (true/false)"
   }
 }

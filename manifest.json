@@ -37,12 +37,12 @@
     },
     "notifications": {
       "name": "settings.notifications",
-      "type": "checkbox",
+      "type": "text",
       "required": false
     },
     "debug_mode": {
       "name": "settings.debug_mode",
-      "type": "checkbox",
+      "type": "text",
       "required": false
     }
   }
