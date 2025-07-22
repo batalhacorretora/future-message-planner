@@ -23,6 +23,17 @@
   "validation_error": "Please fill in all required fields.",
   "confirm_delete": "Are you sure you want to delete this message?",
   "settings": {
-    "custom": "Custom Settings"
+    "polling_interval": "Polling Interval",
+    "polling_1_min": "1 minute",
+    "polling_5_min": "5 minutes",
+    "polling_10_min": "10 minutes",
+    "polling_30_min": "30 minutes",
+    "timezone": "Time Zone",
+    "timezone_sao_paulo": "São Paulo (UTC-3)",
+    "timezone_new_york": "New York (UTC-5)",
+    "timezone_madrid": "Madrid (UTC+1)",
+    "timezone_utc": "UTC (UTC+0)",
+    "notifications": "Enable Notifications",
+    "debug_mode": "Debug Mode"
   }
 }
