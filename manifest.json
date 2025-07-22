@@ -1,7 +1,9 @@
 
 {
   "widget": {
-    "name": "mensagens-futuras",
+    "name": "widget.name",
+    "description": "widget.description",
+    "short_description": "widget.short_description",
     "version": "1.0.0",
     "interface_version": 2,
     "init_once": false,
@@ -13,19 +15,20 @@
     }
   },
   "locations": ["lcard-1", "ccard-0", "settings"],
-  "name": {
-    "pt": "Mensagens Futuras",
-    "es": "Mensajes Futuros", 
-    "en": "Future Messages"
+  "tour": {
+    "is_tour": true,
+    "tour_images": {
+      "en": ["/images/slideshow_1_en.jpg", "/images/slideshow_2_en.jpg", "/images/slideshow_3_en.jpg"],
+      "es": ["/images/slideshow_1_es.jpg", "/images/slideshow_2_es.jpg", "/images/slideshow_3_es.jpg"],
+      "pt": ["/images/slideshow_1_pt.jpg", "/images/slideshow_2_pt.jpg", "/images/slideshow_3_pt.jpg"]
+    },
+    "tour_description": "widget.tour_description"
   },
-  "description": {
-    "pt": "Permite agendar o envio de mensagens para datas e horários futuros.",
-    "es": "Permite programar el envío de mensajes para fechas y horas futuras.",
-    "en": "Allows scheduling message sending for future dates and times."
-  },
-  "description_full": {
-    "pt": "O Widget Mensagens Futuras permite que as SDRs agendem o envio automático de mensagens para leads/contatos em datas e horas específicas. Ele gerencia o agendamento através de uma interface intuitiva e prepara os dados para envio via Salesbot.",
-    "es": "El Widget Mensajes Futuros permite a los SDR programar el envío automático de mensajes a leads/contactos en fechas y horas específicas. Gestiona la programación a través de una interfaz intuitiva y prepara los datos para el envío vía Salesbot.",
-    "en": "The Future Messages Widget allows SDRs to schedule automatic message sending to leads/contacts at specific dates and times. It manages scheduling through an intuitive interface and prepares data for sending via Salesbot."
+  "settings": {
+    "custom": {
+      "name": "settings.custom",
+      "type": "custom",
+      "required": false
+    }
   }
 }

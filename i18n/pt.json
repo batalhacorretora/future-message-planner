@@ -1,0 +1,28 @@
+
+{
+  "widget": {
+    "name": "Mensagens Futuras",
+    "short_description": "Permite agendar o envio de mensagens para datas e horários futuros.",
+    "description": "O Widget Mensagens Futuras permite que as SDRs agendem o envio automático de mensagens para leads/contatos em datas e horas específicas. Ele gerencia o agendamento através de uma interface intuitiva e prepara os dados para envio via Salesbot.",
+    "tour_description": "O Widget Mensagens Futuras permite agendar mensagens para envio automático."
+  },
+  "schedule_new_message": "Agendar Nova Mensagem",
+  "scheduled_messages": "Mensagens Agendadas",
+  "edit": "Editar",
+  "delete": "Excluir",
+  "message_text": "Texto da Mensagem",
+  "scheduled_datetime": "Data e Hora do Envio",
+  "save_message": "Agendar Mensagem",
+  "cancel": "Cancelar",
+  "status": "Status",
+  "scheduled_by": "Agendada por",
+  "scheduled_at": "Agendada em",
+  "message_saved": "Mensagem agendada com sucesso!",
+  "message_deleted": "Mensagem excluída com sucesso!",
+  "save_error": "Não foi possível agendar sua mensagem. Tente novamente.",
+  "validation_error": "Por favor, preencha todos os campos obrigatórios.",
+  "confirm_delete": "Tem certeza que deseja excluir esta mensagem?",
+  "settings": {
+    "custom": "Configurações Personalizadas"
+  }
+}
