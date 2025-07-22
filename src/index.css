@@ -2,9 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Design system for Kommo Mensagens Futuras Widget
+All colors MUST be HSL for compatibility.
 */
+
+/* Kommo CRM specific colors and design tokens */
+:root {
+  /* Primary Kommo-inspired colors */
+  --kommo-primary: 210 100% 50%;
+  --kommo-primary-light: 210 100% 60%;
+  --kommo-primary-dark: 210 100% 40%;
+  
+  /* Widget specific colors */
+  --widget-success: 142 76% 36%;
+  --widget-warning: 38 92% 50%;
+  --widget-error: 0 84% 60%;
+  --widget-info: 217 91% 60%;
+  
+  /* Background and surface colors */
+  --widget-bg: 0 0% 100%;
+  --widget-surface: 0 0% 98%;
+  --widget-border: 220 13% 91%;
+  --widget-hover: 210 40% 96%;
+  
+  /* Text colors */
+  --widget-text-primary: 222 84% 5%;
+  --widget-text-secondary: 215 16% 47%;
+  --widget-text-muted: 215 16% 65%;
+  
+  /* Status indicator colors */
+  --status-pending: 38 92% 50%;
+  --status-scheduled: 210 100% 50%;
+  --status-sent: 142 76% 36%;
+  --status-failed: 0 84% 60%;
+  --status-cancelled: 220 14% 46%;
+  
+  /* Gradients for visual appeal */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--kommo-primary)), hsl(var(--kommo-primary-light)));
+  --gradient-success: linear-gradient(135deg, hsl(var(--widget-success)), hsl(142 76% 45%));
+  
+  /* Shadows */
+  --shadow-widget: 0 2px 8px hsl(var(--kommo-primary) / 0.1);
+  --shadow-card: 0 1px 3px hsl(220 13% 91% / 0.5);
+  
+  /* Transitions */
+  --transition-fast: all 0.15s ease;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 @layer base {
   :root {
