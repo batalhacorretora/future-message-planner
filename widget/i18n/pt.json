@@ -1,0 +1,19 @@
+
+{
+  "schedule_new_message": "Agendar Nova Mensagem",
+  "scheduled_messages": "Mensagens Agendadas",
+  "edit": "Editar",
+  "delete": "Excluir",
+  "message_text": "Texto da Mensagem",
+  "scheduled_datetime": "Data e Hora do Envio",
+  "save_message": "Agendar Mensagem",
+  "cancel": "Cancelar",
+  "status": "Status",
+  "scheduled_by": "Agendada por",
+  "scheduled_at": "Agendada em",
+  "message_saved": "Mensagem agendada com sucesso!",
+  "message_deleted": "Mensagem excluída com sucesso!",
+  "save_error": "Não foi possível agendar sua mensagem. Tente novamente.",
+  "validation_error": "Por favor, preencha todos os campos obrigatórios.",
+  "confirm_delete": "Tem certeza que deseja excluir esta mensagem?"
+}

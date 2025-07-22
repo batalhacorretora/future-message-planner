@@ -1,0 +1,360 @@
+
+/* Mensagens Futuras Widget Styles */
+
+.mensagens-futuras-widget {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mensagens-futuras-widget .widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.mensagens-futuras-widget .widget-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.mensagens-futuras-widget .btn-schedule {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.mensagens-futuras-widget .btn-schedule:hover {
+  background: #2980b9;
+}
+
+.mensagens-futuras-widget .messages-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.mensagens-futuras-widget .message-item {
+  border: 1px solid #e0e6ed;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+  background: #ffffff;
+}
+
+.mensagens-futuras-widget .message-item:last-child {
+  margin-bottom: 0;
+}
+
+.mensagens-futuras-widget .message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.mensagens-futuras-widget .message-datetime {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.mensagens-futuras-widget .message-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.mensagens-futuras-widget .btn-action {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mensagens-futuras-widget .btn-edit {
+  color: #3498db;
+  border-color: #3498db;
+}
+
+.mensagens-futuras-widget .btn-edit:hover {
+  background: #3498db;
+  color: white;
+}
+
+.mensagens-futuras-widget .btn-delete {
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+
+.mensagens-futuras-widget .btn-delete:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+.mensagens-futuras-widget .message-content {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.mensagens-futuras-widget .message-meta {
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mensagens-futuras-widget .message-status {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.mensagens-futuras-widget .status-agendada {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.mensagens-futuras-widget .status-para-enviar {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.mensagens-futuras-widget .status-enviada {
+  background: #e8f5e8;
+  color: #388e3c;
+}
+
+.mensagens-futuras-widget .status-erro {
+  background: #ffebee;
+  color: #d32f2f;
+}
+
+.mensagens-futuras-widget .status-cancelada {
+  background: #f5f5f5;
+  color: #757575;
+}
+
+.mensagens-futuras-widget .empty-state {
+  text-align: center;
+  padding: 32px 16px;
+  color: #888;
+}
+
+.mensagens-futuras-widget .empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* Modal Styles */
+.mensagens-futuras-modal .modal-content {
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.mensagens-futuras-modal .form-group {
+  margin-bottom: 20px;
+}
+
+.mensagens-futuras-modal .form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.mensagens-futuras-modal .form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.mensagens-futuras-modal .form-control:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.mensagens-futuras-modal .form-control[readonly] {
+  background: #f8f9fa;
+  color: #6c757d;
+}
+
+.mensagens-futuras-modal .textarea-control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.mensagens-futuras-modal .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e6ed;
+  margin-top: 20px;
+}
+
+.mensagens-futuras-modal .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mensagens-futuras-modal .btn-primary {
+  background: #3498db;
+  color: white;
+}
+
+.mensagens-futuras-modal .btn-primary:hover {
+  background: #2980b9;
+}
+
+.mensagens-futuras-modal .btn-secondary {
+  background: #95a5a6;
+  color: white;
+}
+
+.mensagens-futuras-modal .btn-secondary:hover {
+  background: #7f8c8d;
+}
+
+/* Settings Page Styles */
+.mensagens-futuras-settings {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.mensagens-futuras-settings .page-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e6ed;
+}
+
+.mensagens-futuras-settings .page-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+}
+
+.mensagens-futuras-settings .page-description {
+  color: #7f8c8d;
+  font-size: 16px;
+}
+
+.mensagens-futuras-settings .messages-table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mensagens-futuras-settings .table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mensagens-futuras-settings .table th,
+.mensagens-futuras-settings .table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e0e6ed;
+}
+
+.mensagens-futuras-settings .table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.mensagens-futuras-settings .table td {
+  font-size: 14px;
+  color: #555;
+}
+
+.mensagens-futuras-settings .table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.mensagens-futuras-settings .entity-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mensagens-futuras-settings .entity-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mensagens-futuras-widget .message-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .mensagens-futuras-widget .message-actions {
+    align-self: stretch;
+    justify-content: flex-end;
+  }
+
+  .mensagens-futuras-settings .table {
+    font-size: 12px;
+  }
+  
+  .mensagens-futuras-settings .table th,
+  .mensagens-futuras-settings .table td {
+    padding: 8px 12px;
+  }
+}
+
+/* Loading States */
+.mensagens-futuras-widget .loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: #888;
+}
+
+.mensagens-futuras-widget .loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  border: 2px solid #ddd;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

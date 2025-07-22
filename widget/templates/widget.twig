@@ -1,0 +1,57 @@
+
+{# Main widget template for sidebar (lcard-1, ccard-0) #}
+<div class="mensagens-futuras-widget">
+  <div class="widget-header">
+    <h3 class="widget-title">{{ i18n.scheduled_messages }}</h3>
+    <button class="btn-schedule js-schedule-message" type="button">
+      {{ i18n.schedule_new_message }}
+    </button>
+  </div>
+
+  {% if messages|length > 0 %}
+    <div class="messages-list">
+      {% for message in messages %}
+        <div class="message-item">
+          <div class="message-header">
+            <div class="message-datetime">
+              {{ message.scheduledDateTime|date('d/m/Y H:i') }}
+            </div>
+            <div class="message-actions">
+              {% if message.currentStatus != 'Cancelada' and message.currentStatus != 'Enviada' %}
+                <button class="btn-action btn-edit js-edit-message" 
+                        data-message-id="{{ message.id }}" 
+                        type="button">
+                  {{ i18n.edit }}
+                </button>
+              {% endif %}
+              <button class="btn-action btn-delete js-delete-message" 
+                      data-message-id="{{ message.id }}" 
+                      type="button">
+                {{ i18n.delete }}
+              </button>
+            </div>
+          </div>
+          
+          <div class="message-content">
+            {{ message.messageText|length > 100 ? message.messageText|slice(0, 100) ~ '...' : message.messageText }}
+          </div>
+          
+          <div class="message-meta">
+            <span class="message-status status-{{ message.currentStatus|lower|replace({' ': '-'}) }}">
+              {{ message.currentStatus }}
+            </span>
+            <span class="scheduled-info">
+              {{ i18n.scheduled_by }}: {{ message.auditLog[0].userName }}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-state-icon">📅</div>
+      <p>Nenhuma mensagem agendada para este {{ entityType == 'leads' ? 'lead' : 'contato' }}.</p>
+      <p>Clique em "{{ i18n.schedule_new_message }}" para começar.</p>
+    </div>
+  {% endif %}
+</div>

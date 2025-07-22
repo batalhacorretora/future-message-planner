@@ -1,0 +1,19 @@
+
+{
+  "schedule_new_message": "Programar Nuevo Mensaje",
+  "scheduled_messages": "Mensajes Programados",
+  "edit": "Editar",
+  "delete": "Eliminar",
+  "message_text": "Texto del Mensaje",
+  "scheduled_datetime": "Fecha y Hora de Envío",
+  "save_message": "Programar Mensaje",
+  "cancel": "Cancelar",
+  "status": "Estado",
+  "scheduled_by": "Programado por",
+  "scheduled_at": "Programado en",
+  "message_saved": "¡Mensaje programado con éxito!",
+  "message_deleted": "¡Mensaje eliminado con éxito!",
+  "save_error": "No se pudo programar su mensaje. Inténtelo de nuevo.",
+  "validation_error": "Por favor, complete todos los campos obligatorios.",
+  "confirm_delete": "¿Está seguro de que desea eliminar este mensaje?"
+}

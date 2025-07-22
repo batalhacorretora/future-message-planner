@@ -1,0 +1,19 @@
+
+{
+  "schedule_new_message": "Schedule New Message",
+  "scheduled_messages": "Scheduled Messages",
+  "edit": "Edit",
+  "delete": "Delete",
+  "message_text": "Message Text",
+  "scheduled_datetime": "Send Date & Time",
+  "save_message": "Schedule Message",
+  "cancel": "Cancel",
+  "status": "Status",
+  "scheduled_by": "Scheduled by",
+  "scheduled_at": "Scheduled at",
+  "message_saved": "Message scheduled successfully!",
+  "message_deleted": "Message deleted successfully!",
+  "save_error": "Could not schedule your message. Please try again.",
+  "validation_error": "Please fill in all required fields.",
+  "confirm_delete": "Are you sure you want to delete this message?"
+}

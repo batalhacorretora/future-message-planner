@@ -1,73 +1,100 @@
-# Welcome to your Lovable project
 
-## Project info
+# Mensagens Futuras - Kommo CRM Widget
 
-**URL**: https://lovable.dev/projects/45a04881-ce1d-4940-97ba-9f4ba6e5ff26
+Widget para agendamento de mensagens automáticas no Kommo CRM.
 
-## How can I edit this code?
+## Descrição
 
-There are several ways of editing your application.
+O Widget "Mensagens Futuras" permite que SDRs agendem o envio automático de mensagens para leads/contatos em datas e horas específicas. O widget gerencia o agendamento através de uma interface intuitiva e prepara os dados para envio via Salesbot.
 
-**Use Lovable**
+## Funcionalidades
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/45a04881-ce1d-4940-97ba-9f4ba6e5ff26) and start prompting.
+### Interface Principal
+- **Agendamento de Mensagens**: Interface intuitiva para agendar mensagens
+- **Visualização por Lead/Contato**: Lista de mensagens específicas no sidebar
+- **Página de Configurações**: Visão global de todas as mensagens agendadas
+- **Edição e Exclusão**: Gerenciamento completo das mensagens agendadas
 
-Changes made via Lovable will be committed automatically to this repo.
+### Trilha de Auditoria
+- Registro completo de todas as ações (agendamento, edição, exclusão)
+- Informações de usuário e timestamp
+- Histórico de alterações detalhado
 
-**Use your preferred IDE**
+### Integração com Salesbot
+- Atualização automática de campos personalizados do Kommo
+- Sistema de status para comunicação com Salesbot
+- Polling automático para identificar mensagens prontas para envio
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Estrutura Técnica
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Tecnologias Utilizadas
+- **JavaScript (ES5)** com jQuery
+- **Twig.js** para templates
+- **CSS3** para estilização
+- **Kommo Widget API** para integração
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Arquitetura
+```
+mensagens-futuras-widget/
+├── manifest.json              # Configurações do widget
+├── widget/
+│   ├── script.js             # Lógica principal
+│   ├── styles.css            # Estilos
+│   ├── i18n/                 # Arquivos de localização
+│   │   ├── pt.json           # Português
+│   │   ├── es.json           # Espanhol
+│   │   └── en.json           # Inglês
+│   └── templates/            # Templates Twig
+│       ├── widget.twig       # Template do sidebar
+│       ├── schedule_modal.twig # Modal de agendamento
+│       └── settings_page.twig # Página de configurações
+└── README.md
 ```
 
-**Edit a file directly in GitHub**
+### Localização
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+O widget possui suporte para múltiplos idiomas:
+- **lcard-1**: Sidebar do Lead
+- **ccard-0**: Sidebar do Contato  
+- **settings**: Página de configurações
 
-**Use GitHub Codespaces**
+### Campos Personalizados
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Para integração com Salesbot, o widget utiliza os seguintes campos personalizados:
+- `Mensagem Agendada - Texto` (Text Area)
+- `Mensagem Agendada - Data/Hora Envio` (Date & Time)
+- `Mensagem Agendada - Status` (Dropdown: 'Agendada', 'Para Enviar', 'Enviada', 'Erro no Envio', 'Cancelada')
 
-## What technologies are used for this project?
+### Status de Mensagens
 
-This project is built with:
+- **Agendada**: Mensagem criada e aguardando horário de envio
+- **Para Enviar**: Horário atingido, pronta para o Salesbot processar
+- **Enviada**: Mensagem enviada com sucesso pelo Salesbot
+- **Erro no Envio**: Falha no envio pelo Salesbot
+- **Cancelada**: Mensagem cancelada pelo usuário
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Instalação
 
-## How can I deploy this project?
+1. Faça upload dos arquivos do widget para o Kommo
+2. Configure os campos personalizados necessários
+3. Ative o widget nas localizações desejadas
+4. Configure o Salesbot para monitorar os campos personalizados
 
-Simply open [Lovable](https://lovable.dev/projects/45a04881-ce1d-4940-97ba-9f4ba6e5ff26) and click on Share -> Publish.
+## Configuração do Salesbot
 
-## Can I connect a custom domain to my Lovable project?
+O Salesbot deve ser configurado para:
+1. Monitorar o campo "Mensagem Agendada - Status"
+2. Ativar quando o status for "Para Enviar"
+3. Enviar a mensagem do campo "Mensagem Agendada - Texto"
+4. Atualizar o status para "Enviada" ou "Erro no Envio"
 
-Yes, you can!
+## Segurança e Permissões
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- Validação de formulários no frontend
+- Verificação de permissões do usuário
+- Sanitização de dados antes do armazenamento
+- Logs de auditoria para rastreabilidade
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Suporte
+
+Para suporte técnico, entre em contato através dos canais oficiais do Kommo ou consulte a documentação da API de Widgets.

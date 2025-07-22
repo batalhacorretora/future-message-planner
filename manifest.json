@@ -1,0 +1,31 @@
+
+{
+  "widget": {
+    "name": "mensagens-futuras",
+    "version": "1.0.0",
+    "interface_version": 2,
+    "init_once": false,
+    "locale": ["pt", "es", "en"],
+    "installation": true,
+    "support": {
+      "link": "https://support.example.com",
+      "email": "support@example.com"
+    }
+  },
+  "locations": ["lcard-1", "ccard-0", "settings"],
+  "name": {
+    "pt": "Mensagens Futuras",
+    "es": "Mensajes Futuros", 
+    "en": "Future Messages"
+  },
+  "description": {
+    "pt": "Permite agendar o envio de mensagens para datas e horários futuros.",
+    "es": "Permite programar el envío de mensajes para fechas y horas futuras.",
+    "en": "Allows scheduling message sending for future dates and times."
+  },
+  "description_full": {
+    "pt": "O Widget Mensagens Futuras permite que as SDRs agendem o envio automático de mensagens para leads/contatos em datas e horas específicas. Ele gerencia o agendamento através de uma interface intuitiva e prepara os dados para envio via Salesbot.",
+    "es": "El Widget Mensajes Futuros permite a los SDR programar el envío automático de mensajes a leads/contactos en fechas y horas específicas. Gestiona la programación a través de una interfaz intuitiva y prepara los datos para el envío vía Salesbot.",
+    "en": "The Future Messages Widget allows SDRs to schedule automatic message sending to leads/contacts at specific dates and times. It manages scheduling through an intuitive interface and prepares data for sending via Salesbot."
+  }
+}

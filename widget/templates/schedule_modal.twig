@@ -1,0 +1,48 @@
+
+{# Schedule/Edit message modal template #}
+<div class="mensagens-futuras-modal-content">
+  <div class="modal-header">
+    <h2>{{ isEdit ? 'Editar Mensagem' : i18n.schedule_new_message }}</h2>
+  </div>
+
+  <div class="modal-body">
+    <form class="schedule-form">
+      <div class="form-group">
+        <label class="form-label" for="message-text">{{ i18n.message_text }}*</label>
+        <textarea class="form-control textarea-control js-message-text" 
+                  id="message-text" 
+                  placeholder="Digite sua mensagem aqui..."
+                  required>{{ message ? message.messageText : '' }}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="scheduled-datetime">{{ i18n.scheduled_datetime }}*</label>
+        <input type="text" 
+               class="form-control js-scheduled-datetime js-datetime-picker" 
+               id="scheduled-datetime"
+               value="{{ message ? message.scheduledDateTime : '' }}"
+               placeholder="DD/MM/AAAA HH:MM"
+               required />
+      </div>
+
+      {% if isEdit %}
+        <div class="form-group">
+          <label class="form-label">{{ i18n.status }}</label>
+          <input type="text" 
+                 class="form-control" 
+                 value="{{ message.currentStatus }}" 
+                 readonly />
+        </div>
+      {% endif %}
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-secondary js-cancel-modal" type="button">
+      {{ i18n.cancel }}
+    </button>
+    <button class="btn btn-primary js-save-message" type="button">
+      {{ isEdit ? 'Salvar Alterações' : i18n.save_message }}
+    </button>
+  </div>
+</div>

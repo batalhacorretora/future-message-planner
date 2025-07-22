@@ -1,0 +1,78 @@
+
+{# Settings page template showing all messages #}
+<div class="mensagens-futuras-settings">
+  <div class="page-header">
+    <h1 class="page-title">{{ i18n.scheduled_messages }}</h1>
+    <p class="page-description">
+      Visualize e gerencie todas as mensagens agendadas em seu CRM
+    </p>
+  </div>
+
+  {% if messages|length > 0 %}
+    <div class="messages-table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data/Hora do Envio</th>
+            <th>Lead/Contato</th>
+            <th>Mensagem</th>
+            <th>{{ i18n.status }}</th>
+            <th>{{ i18n.scheduled_by }}</th>
+            <th>{{ i18n.scheduled_at }}</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for message in messages %}
+            <tr>
+              <td>
+                <strong>{{ message.scheduledDateTime|date('d/m/Y H:i') }}</strong>
+              </td>
+              <td>
+                <a href="/{{ message.entityType }}/detail/{{ message.entityId }}" 
+                   class="entity-link" 
+                   target="_blank">
+                  {{ message.entityType == 'leads' ? 'Lead' : 'Contato' }} #{{ message.entityId }}
+                </a>
+              </td>
+              <td>
+                <div class="message-preview">
+                  {{ message.messageText|length > 80 ? message.messageText|slice(0, 80) ~ '...' : message.messageText }}
+                </div>
+              </td>
+              <td>
+                <span class="message-status status-{{ message.currentStatus|lower|replace({' ': '-'}) }}">
+                  {{ message.currentStatus }}
+                </span>
+              </td>
+              <td>{{ message.auditLog[0].userName }}</td>
+              <td>{{ message.auditLog[0].timestamp|date('d/m/Y H:i') }}</td>
+              <td>
+                <div class="message-actions">
+                  {% if message.currentStatus != 'Cancelada' and message.currentStatus != 'Enviada' %}
+                    <button class="btn-action btn-edit js-edit-message" 
+                            data-message-id="{{ message.id }}" 
+                            type="button">
+                      {{ i18n.edit }}
+                    </button>
+                  {% endif %}
+                  <button class="btn-action btn-delete js-delete-message" 
+                          data-message-id="{{ message.id }}" 
+                          type="button">
+                    {{ i18n.delete }}
+                  </button>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-state-icon">📭</div>
+      <h3>Nenhuma mensagem agendada</h3>
+      <p>As mensagens agendadas aparecerão aqui quando forem criadas nos leads e contatos.</p>
+    </div>
+  {% endif %}
+</div>
