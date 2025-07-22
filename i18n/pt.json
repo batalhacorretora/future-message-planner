@@ -23,16 +23,8 @@
   "validation_error": "Por favor, preencha todos os campos obrigatórios.",
   "confirm_delete": "Tem certeza que deseja excluir esta mensagem?",
   "settings": {
-    "polling_interval": "Intervalo de Verificação",
-    "polling_1_min": "1 minuto",
-    "polling_5_min": "5 minutos",
-    "polling_10_min": "10 minutos",
-    "polling_30_min": "30 minutos",
-    "timezone": "Fuso Horário",
-    "timezone_sao_paulo": "São Paulo (UTC-3)",
-    "timezone_new_york": "Nova York (UTC-5)",
-    "timezone_madrid": "Madrid (UTC+1)",
-    "timezone_utc": "UTC (UTC+0)",
+    "polling_interval": "Intervalo de Verificação (em minutos: 1, 5, 10 ou 30)",
+    "timezone": "Fuso Horário (ex: America/Sao_Paulo, America/New_York, Europe/Madrid, UTC)",
     "notifications": "Ativar Notificações",
     "debug_mode": "Modo de Depuração"
   }

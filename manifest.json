@@ -27,25 +27,13 @@
   "settings": {
     "polling_interval": {
       "name": "settings.polling_interval",
-      "type": "select",
-      "required": true,
-      "values": [
-        {"value": "1", "name": "settings.polling_1_min"},
-        {"value": "5", "name": "settings.polling_5_min"},
-        {"value": "10", "name": "settings.polling_10_min"},
-        {"value": "30", "name": "settings.polling_30_min"}
-      ]
+      "type": "text",
+      "required": true
     },
     "timezone": {
       "name": "settings.timezone",
-      "type": "select",
-      "required": true,
-      "values": [
-        {"value": "America/Sao_Paulo", "name": "settings.timezone_sao_paulo"},
-        {"value": "America/New_York", "name": "settings.timezone_new_york"},
-        {"value": "Europe/Madrid", "name": "settings.timezone_madrid"},
-        {"value": "UTC", "name": "settings.timezone_utc"}
-      ]
+      "type": "text",
+      "required": true
     },
     "notifications": {
       "name": "settings.notifications",
