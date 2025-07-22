@@ -1,3 +1,4 @@
+
 {# Settings page template for widget configuration #}
 <div class="mensagens-futuras-settings">
   <div class="page-header">
@@ -13,16 +14,6 @@
         <h3>Configurações Gerais</h3>
         
         <div class="form-field">
-          <label for="polling_interval">{{ i18n.settings.polling_interval }}</label>
-          <input type="text" 
-                 id="polling_interval" 
-                 name="polling_interval" 
-                 placeholder="10"
-                 value="10" />
-          <small class="field-help">Valores válidos: 1, 5, 10 ou 30 minutos</small>
-        </div>
-
-        <div class="form-field">
           <label for="timezone">{{ i18n.settings.timezone }}</label>
           <input type="text" 
                  id="timezone" 
@@ -32,18 +23,35 @@
           <small class="field-help">Exemplos: America/Sao_Paulo, America/New_York, Europe/Madrid, UTC</small>
         </div>
 
-        <div class="form-field checkbox-field">
-          <label>
-            <input type="checkbox" id="notifications" name="notifications" checked>
-            {{ i18n.settings.notifications }}
-          </label>
+        <div class="form-field">
+          <label for="polling_interval">{{ i18n.settings.polling_interval }}</label>
+          <select id="polling_interval" name="polling_interval">
+            <option value="1">1 minuto</option>
+            <option value="5">5 minutos</option>
+            <option value="10" selected>10 minutos</option>
+            <option value="30">30 minutos</option>
+          </select>
+          <small class="field-help">Frequência de verificação de mensagens</small>
         </div>
 
-        <div class="form-field checkbox-field">
-          <label>
-            <input type="checkbox" id="debug_mode" name="debug_mode">
-            {{ i18n.settings.debug_mode }}
-          </label>
+        <div class="form-field">
+          <label for="notifications">{{ i18n.settings.notifications }}</label>
+          <input type="text" 
+                 id="notifications" 
+                 name="notifications" 
+                 placeholder="true"
+                 value="true" />
+          <small class="field-help">Digite "true" para ativar ou "false" para desativar</small>
+        </div>
+
+        <div class="form-field">
+          <label for="debug_mode">{{ i18n.settings.debug_mode }}</label>
+          <input type="text" 
+                 id="debug_mode" 
+                 name="debug_mode" 
+                 placeholder="false"
+                 value="false" />
+          <small class="field-help">Digite "true" para ativar ou "false" para desativar</small>
         </div>
       </div>
 
@@ -54,74 +62,11 @@
     </form>
   </div>
 
-  {% if messages|length > 0 %}
-    <div class="messages-overview">
-      <h3>{{ i18n.scheduled_messages }}</h3>
-      <div class="messages-table">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Data/Hora do Envio</th>
-              <th>Lead/Contato</th>
-              <th>Mensagem</th>
-              <th>{{ i18n.status }}</th>
-              <th>{{ i18n.scheduled_by }}</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for message in messages %}
-              <tr>
-                <td>
-                  <strong>{{ message.scheduledDateTime|date('d/m/Y H:i') }}</strong>
-                </td>
-                <td>
-                  <a href="/{{ message.entityType }}/detail/{{ message.entityId }}" 
-                     class="entity-link" 
-                     target="_blank">
-                    {{ message.entityType == 'leads' ? 'Lead' : 'Contato' }} #{{ message.entityId }}
-                  </a>
-                </td>
-                <td>
-                  <div class="message-preview">
-                    {{ message.messageText|length > 50 ? message.messageText|slice(0, 50) ~ '...' : message.messageText }}
-                  </div>
-                </td>
-                <td>
-                  <span class="message-status status-{{ message.currentStatus|lower|replace({' ': '-'}) }}">
-                    {{ message.currentStatus }}
-                  </span>
-                </td>
-                <td>{{ message.auditLog[0].userName }}</td>
-                <td>
-                  <div class="message-actions">
-                    {% if message.currentStatus != 'Cancelada' and message.currentStatus != 'Enviada' %}
-                      <button class="btn-action btn-edit js-edit-message" 
-                              data-message-id="{{ message.id }}" 
-                              type="button">
-                        {{ i18n.edit }}
-                      </button>
-                    {% endif %}
-                    <button class="btn-action btn-delete js-delete-message" 
-                            data-message-id="{{ message.id }}" 
-                            type="button">
-                      {{ i18n.delete }}
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  {% else %}
-    <div class="empty-state">
-      <div class="empty-state-icon">📭</div>
-      <h3>Nenhuma mensagem agendada</h3>
-      <p>As mensagens agendadas aparecerão aqui quando forem criadas nos leads e contatos.</p>
-    </div>
-  {% endif %}
+  <div class="empty-state">
+    <div class="empty-state-icon">⚙️</div>
+    <h3>Configurações do Widget</h3>
+    <p>Use este painel para configurar o comportamento do widget de mensagens futuras.</p>
+  </div>
 </div>
 
 <script>
@@ -146,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function validateSettings() {
   const pollingInterval = document.getElementById('polling_interval').value;
   const timezone = document.getElementById('timezone').value;
+  const notifications = document.getElementById('notifications').value.toLowerCase();
+  const debugMode = document.getElementById('debug_mode').value.toLowerCase();
   
   // Validate polling interval
   const validIntervals = ['1', '5', '10', '30'];
@@ -160,6 +107,17 @@ function validateSettings() {
     return false;
   }
   
+  // Validate boolean fields
+  if (notifications !== 'true' && notifications !== 'false') {
+    alert('Campo de notificações deve ser "true" ou "false"');
+    return false;
+  }
+  
+  if (debugMode !== 'true' && debugMode !== 'false') {
+    alert('Campo de modo de depuração deve ser "true" ou "false"');
+    return false;
+  }
+  
   return true;
 }
 
@@ -167,27 +125,27 @@ function loadSettings() {
   // Load settings from widget storage
   const settings = AMOCRM.widgets.system.getSettings();
   if (settings) {
-    if (settings.polling_interval) {
-      document.getElementById('polling_interval').value = settings.polling_interval;
-    }
     if (settings.timezone) {
       document.getElementById('timezone').value = settings.timezone;
     }
+    if (settings.polling_interval) {
+      document.getElementById('polling_interval').value = settings.polling_interval;
+    }
     if (settings.notifications !== undefined) {
-      document.getElementById('notifications').checked = settings.notifications;
+      document.getElementById('notifications').value = settings.notifications;
     }
     if (settings.debug_mode !== undefined) {
-      document.getElementById('debug_mode').checked = settings.debug_mode;
+      document.getElementById('debug_mode').value = settings.debug_mode;
     }
   }
 }
 
 function saveSettings() {
   const settings = {
-    polling_interval: document.getElementById('polling_interval').value,
     timezone: document.getElementById('timezone').value,
-    notifications: document.getElementById('notifications').checked,
-    debug_mode: document.getElementById('debug_mode').checked
+    polling_interval: document.getElementById('polling_interval').value,
+    notifications: document.getElementById('notifications').value.toLowerCase(),
+    debug_mode: document.getElementById('debug_mode').value.toLowerCase()
   };
   
   AMOCRM.widgets.system.setSettings(settings);
@@ -197,17 +155,17 @@ function saveSettings() {
 }
 
 function resetToDefaults() {
-  document.getElementById('polling_interval').value = '10';
   document.getElementById('timezone').value = 'America/Sao_Paulo';
-  document.getElementById('notifications').checked = true;
-  document.getElementById('debug_mode').checked = false;
+  document.getElementById('polling_interval').value = '10';
+  document.getElementById('notifications').value = 'true';
+  document.getElementById('debug_mode').value = 'false';
 }
 </script>
 
 <style>
 .mensagens-futuras-settings {
   padding: 20px;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -264,14 +222,19 @@ function resetToDefaults() {
   font-size: 14px;
 }
 
-.checkbox-field label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+.form-field input[type="text"]:focus,
+.form-field select:focus {
+  border-color: #007cba;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
 }
 
-.checkbox-field input[type="checkbox"] {
-  margin-right: 8px;
+.field-help {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
 }
 
 .form-actions {
@@ -303,61 +266,6 @@ function resetToDefaults() {
   opacity: 0.9;
 }
 
-.messages-overview {
-  margin-top: 40px;
-}
-
-.messages-overview h3 {
-  margin-bottom: 20px;
-  color: #333;
-  font-size: 18px;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-.table th,
-.table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.table th {
-  background-color: #f8f9fa;
-  font-weight: 600;
-  color: #333;
-}
-
-.message-status {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.status-scheduled { background-color: #007cba; color: white; }
-.status-sent { background-color: #28a745; color: white; }
-.status-failed { background-color: #dc3545; color: white; }
-.status-cancelled { background-color: #6c757d; color: white; }
-
-.btn-action {
-  padding: 6px 12px;
-  margin-right: 5px;
-  border: 1px solid #ccc;
-  background: white;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-.btn-edit:hover { background-color: #007cba; color: white; }
-.btn-delete:hover { background-color: #dc3545; color: white; }
-
 .empty-state {
   text-align: center;
   padding: 40px;
@@ -367,28 +275,5 @@ function resetToDefaults() {
 .empty-state-icon {
   font-size: 48px;
   margin-bottom: 20px;
-}
-
-.field-help {
-  display: block;
-  margin-top: 5px;
-  font-size: 12px;
-  color: #666;
-  font-style: italic;
-}
-
-.form-field input[type="text"] {
-  width: 100%;
-  max-width: 300px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.form-field input[type="text"]:focus {
-  border-color: #007cba;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
 }
 </style>
